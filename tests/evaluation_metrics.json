@@ -1,0 +1,617 @@
+{
+    "document_id": "eee0fa53e010454d9d1d80ce149b8da2",
+    "total_questions": 20,
+    "retrieval_top_k": 20,
+    "rerank_top_k": 5,
+    "baseline_metrics": {
+        "hit_recall_at_5": 0.9,
+        "hit_recall_at_10": 0.95,
+        "hit_recall_at_20": 1.0,
+        "chunk_recall_at_5": 0.8166666666666667,
+        "chunk_recall_at_10": 0.9083333333333334,
+        "chunk_recall_at_20": 1.0,
+        "mrr": 0.6880128205128205
+    },
+    "reranked_metrics": {
+        "hit_recall_at_5": 0.95,
+        "hit_recall_at_10": 0.95,
+        "hit_recall_at_20": 1.0,
+        "chunk_recall_at_5": 0.8916666666666666,
+        "chunk_recall_at_10": 0.925,
+        "chunk_recall_at_20": 1.0,
+        "mrr": 0.7955128205128206
+    },
+    "improvement": {
+        "hit_recall_at_5": {
+            "baseline": 0.9,
+            "reranked": 0.95,
+            "absolute_improvement": 0.04999999999999993,
+            "percentage_improvement": 5.555555555555548
+        },
+        "hit_recall_at_10": {
+            "baseline": 0.95,
+            "reranked": 0.95,
+            "absolute_improvement": 0.0,
+            "percentage_improvement": 0.0
+        },
+        "hit_recall_at_20": {
+            "baseline": 1.0,
+            "reranked": 1.0,
+            "absolute_improvement": 0.0,
+            "percentage_improvement": 0.0
+        },
+        "chunk_recall_at_5": {
+            "baseline": 0.8166666666666667,
+            "reranked": 0.8916666666666666,
+            "absolute_improvement": 0.07499999999999996,
+            "percentage_improvement": 9.18367346938775
+        },
+        "chunk_recall_at_10": {
+            "baseline": 0.9083333333333334,
+            "reranked": 0.925,
+            "absolute_improvement": 0.016666666666666607,
+            "percentage_improvement": 1.8348623853210941
+        },
+        "chunk_recall_at_20": {
+            "baseline": 1.0,
+            "reranked": 1.0,
+            "absolute_improvement": 0.0,
+            "percentage_improvement": 0.0
+        },
+        "mrr": {
+            "baseline": 0.6880128205128205,
+            "reranked": 0.7955128205128206,
+            "absolute_improvement": 0.10750000000000004,
+            "percentage_improvement": 15.624708841889506
+        }
+    },
+    "per_question": [
+        {
+            "question_id": 1,
+            "question": "What key limitation of traditional DLA methods motivates the gDSA task?",
+            "ground_truth_chunk_ids": [
+                1
+            ],
+            "baseline": {
+                "first_relevant_rank": 10,
+                "hit_at_5": 0,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.1
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 2,
+            "question": "Which existing dataset does GraphDoc primarily derive from?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 3,
+            "question": "Under what license are enhanced versions of the DocLayNet-based dataset permitted to be redistributed?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 4,
+            "question": "Why does GraphDoc only consider relations within the same page rather than across pages?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "baseline": {
+                "first_relevant_rank": 3,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.3333333333333333
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 5,
+            "question": "What two pooling-based branches make up the Relation Feature Extractor in DRGG?",
+            "ground_truth_chunk_ids": [
+                29,
+                30,
+                31
+            ],
+            "baseline": {
+                "first_relevant_rank": 2,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.3333333333333333,
+                "recall_at_10": 0.6666666666666666,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.5
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.3333333333333333,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 6,
+            "question": "What is the purpose of the auxiliary relation prediction head in DRGG?",
+            "ground_truth_chunk_ids": [
+                85
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 7,
+            "question": "How is the final relational prediction combined from the main and auxiliary relation heads?",
+            "ground_truth_chunk_ids": [
+                87,
+                88
+            ],
+            "baseline": {
+                "first_relevant_rank": 2,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.5,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.5
+            },
+            "reranked": {
+                "first_relevant_rank": 2,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.5
+            }
+        },
+        {
+            "question_id": 8,
+            "question": "What optimizer and learning rate settings were used to train DRGG?",
+            "ground_truth_chunk_ids": [
+                103
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 9,
+            "question": "What multi-scale image resizing strategy was used during training?",
+            "ground_truth_chunk_ids": [
+                104
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 10,
+            "question": "Which backbone-detector combination achieves the highest mAP on the DLA task?",
+            "ground_truth_chunk_ids": [
+                40,
+                41
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 2,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.5
+            }
+        },
+        {
+            "question_id": 11,
+            "question": "Which relation category is hardest for DRGG to detect, and what AP score does it achieve?",
+            "ground_truth_chunk_ids": [
+                45,
+                46
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 12,
+            "question": "What happens to performance when the relation feature extractor is replaced with a single linear layer?",
+            "ground_truth_chunk_ids": [
+                97
+            ],
+            "baseline": {
+                "first_relevant_rank": 2,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.5
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 13,
+            "question": "How does raising the IoU threshold from 0.5 to 0.95 affect gDSA performance?",
+            "ground_truth_chunk_ids": [
+                99
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 14,
+            "question": "Which document domain achieves the highest mAPg@0.5, and which performs worst on mRg@0.95?",
+            "ground_truth_chunk_ids": [
+                93,
+                94
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.5,
+                "recall_at_10": 0.5,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 3,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 0.5,
+                "recall_at_10": 0.5,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.3333333333333333
+            }
+        },
+        {
+            "question_id": 15,
+            "question": "How does adding logical relations alongside spatial relations affect mRg and mAPg?",
+            "ground_truth_chunk_ids": [
+                95
+            ],
+            "baseline": {
+                "first_relevant_rank": 4,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.25
+            },
+            "reranked": {
+                "first_relevant_rank": 4,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.25
+            }
+        },
+        {
+            "question_id": 16,
+            "question": "What four groups are document elements categorized into when building the hierarchical structure?",
+            "ground_truth_chunk_ids": [
+                67,
+                68
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 17,
+            "question": "What proportion of the GraphDoc dataset underwent human verification, and how many pages were reviewed per domain?",
+            "ground_truth_chunk_ids": [
+                70
+            ],
+            "baseline": {
+                "first_relevant_rank": 4,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.25
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        },
+        {
+            "question_id": 18,
+            "question": "What two limitations does the paper acknowledge about the DRGG approach?",
+            "ground_truth_chunk_ids": [
+                48
+            ],
+            "baseline": {
+                "first_relevant_rank": 13,
+                "hit_at_5": 0,
+                "hit_at_10": 0,
+                "hit_at_20": 1,
+                "recall_at_5": 0.0,
+                "recall_at_10": 0.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.07692307692307693
+            },
+            "reranked": {
+                "first_relevant_rank": 13,
+                "hit_at_5": 0,
+                "hit_at_10": 0,
+                "hit_at_20": 1,
+                "recall_at_5": 0.0,
+                "recall_at_10": 0.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.07692307692307693
+            }
+        },
+        {
+            "question_id": 19,
+            "question": "What two main sources of error are identified in DRGG's qualitative relation predictions?",
+            "ground_truth_chunk_ids": [
+                104
+            ],
+            "baseline": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            },
+            "reranked": {
+                "first_relevant_rank": 4,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.25
+            }
+        },
+        {
+            "question_id": 20,
+            "question": "What improvements does the paper suggest to reduce DRGG's relation-prediction errors?",
+            "ground_truth_chunk_ids": [
+                105
+            ],
+            "baseline": {
+                "first_relevant_rank": 4,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 0.25
+            },
+            "reranked": {
+                "first_relevant_rank": 1,
+                "hit_at_5": 1,
+                "hit_at_10": 1,
+                "hit_at_20": 1,
+                "recall_at_5": 1.0,
+                "recall_at_10": 1.0,
+                "recall_at_20": 1.0,
+                "reciprocal_rank": 1.0
+            }
+        }
+    ]
+}

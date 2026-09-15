@@ -1,0 +1,14 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+app/models/
+*.gguf
+.env
+.DS_Store
+*.log
+uploads/
+

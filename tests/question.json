@@ -1,0 +1,172 @@
+{
+    "document_id": "b7b1ce521fb04beaaf3cea74c5210d2e",
+    "questions": [
+        {
+            "question_id": 1,
+            "question": "What key limitation of traditional DLA methods motivates the gDSA task?",
+            "ground_truth_chunk_ids": [
+                1
+            ],
+            "ground_truth_excerpt": "Traditional document layout analysis (DLA) methods offer only a superficial parsing of documents, focusing on basic instance detection and often failing to capture the nuanced spatial and logical relations between instances."
+        },
+        {
+            "question_id": 2,
+            "question": "Which existing dataset does GraphDoc primarily derive from?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "ground_truth_excerpt": "Our GraphDoc Dataset is primarily derived from the DocLayNet dataset, which contains over 80,000 document page images spanning financial reports, user manuals, scientific papers, and legal regulations."
+        },
+        {
+            "question_id": 3,
+            "question": "Under what license are enhanced versions of the DocLayNet-based dataset permitted to be redistributed?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "ground_truth_excerpt": "In accordance with the License CDLA 1.0, users are permitted to modify and redistribute enhanced versions of datasets based on the DocLayNet dataset."
+        },
+        {
+            "question_id": 4,
+            "question": "Why does GraphDoc only consider relations within the same page rather than across pages?",
+            "ground_truth_chunk_ids": [
+                17
+            ],
+            "ground_truth_excerpt": "Due to page limitations of DocLayNet, we will only consider relations within the same page and not those across pages."
+        },
+        {
+            "question_id": 5,
+            "question": "What two pooling-based branches make up the Relation Feature Extractor in DRGG?",
+            "ground_truth_chunk_ids": [
+                29,
+                30,
+                31
+            ],
+            "ground_truth_excerpt": "The object queries and object feature representations calculated at each decoder layer are fed into independent relation feature extractors, processed through two independent pooling layers and MLPs."
+        },
+        {
+            "question_id": 6,
+            "question": "What is the purpose of the auxiliary relation prediction head in DRGG?",
+            "ground_truth_chunk_ids": [
+                85
+            ],
+            "ground_truth_excerpt": "This auxiliary relation head focuses solely on determining whether a relation exists between two document elements, without classifying the type of relation, acting as a stabilizer that minimizes false positives."
+        },
+        {
+            "question_id": 7,
+            "question": "How is the final relational prediction combined from the main and auxiliary relation heads?",
+            "ground_truth_chunk_ids": [
+                87,
+                88
+            ],
+            "ground_truth_excerpt": "The final relational prediction is computed by multiplying the main relation predictor's output and the auxiliary relation head's output element-wise, retaining only confidently predicted relations."
+        },
+        {
+            "question_id": 8,
+            "question": "What optimizer and learning rate settings were used to train DRGG?",
+            "ground_truth_chunk_ids": [
+                103
+            ],
+            "ground_truth_excerpt": "We trained the model with the AdamW optimizer using a batch size of 4, an initial learning rate of 1x10^-4, and a weight decay of 5x10^-3."
+        },
+        {
+            "question_id": 9,
+            "question": "What multi-scale image resizing strategy was used during training?",
+            "ground_truth_chunk_ids": [
+                104
+            ],
+            "ground_truth_excerpt": "The shorter side of each input image was randomly resized to one of several lengths between 480 and 800 pixels, while the longer side did not exceed 1333 pixels."
+        },
+        {
+            "question_id": 10,
+            "question": "Which backbone-detector combination achieves the highest mAP on the DLA task?",
+            "ground_truth_chunk_ids": [
+                40,
+                41
+            ],
+            "ground_truth_excerpt": "The DRGG framework integrated with the InternImage backbone and RoDLA detector achieves mAP of 81.5%, surpassing all other combinations."
+        },
+        {
+            "question_id": 11,
+            "question": "Which relation category is hardest for DRGG to detect, and what AP score does it achieve?",
+            "ground_truth_chunk_ids": [
+                45,
+                46
+            ],
+            "ground_truth_excerpt": "The reference relation remains challenging, with the highest AP being 18.8% achieved by ResNeXt with RoDLA; our model achieves an AP of 16.8% in this category."
+        },
+        {
+            "question_id": 12,
+            "question": "What happens to performance when the relation feature extractor is replaced with a single linear layer?",
+            "ground_truth_chunk_ids": [
+                97
+            ],
+            "ground_truth_excerpt": "The feature extractor significantly outperforms a linear layer replacement across all metrics, with DLA mAP dropping from 81.5 to 79.9 and mAPg@0.75 dropping from 56.3 to 42.3."
+        },
+        {
+            "question_id": 13,
+            "question": "How does raising the IoU threshold from 0.5 to 0.95 affect gDSA performance?",
+            "ground_truth_chunk_ids": [
+                99
+            ],
+            "ground_truth_excerpt": "At the highest IoU threshold of 0.95, the model achieves only 18.4 mRg@0.95 and 36.5 mAPg@0.95, demonstrating significant challenges in capturing precise alignments."
+        },
+        {
+            "question_id": 14,
+            "question": "Which document domain achieves the highest mAPg@0.5, and which performs worst on mRg@0.95?",
+            "ground_truth_chunk_ids": [
+                93,
+                94
+            ],
+            "ground_truth_excerpt": "Laws and Regulations achieve the highest mAPg@0.5 with 63.2, while Patents perform worst, with mRg@0.95 at 17.5, due to their dense and complex layouts."
+        },
+        {
+            "question_id": 15,
+            "question": "How does adding logical relations alongside spatial relations affect mRg and mAPg?",
+            "ground_truth_chunk_ids": [
+                95
+            ],
+            "ground_truth_excerpt": "When logical relations are included alongside spatial relations, mRg@0.5 drops from 32.1 to 26.7, while mAPg@0.5 improves from 49.5 to 57.5."
+        },
+        {
+            "question_id": 16,
+            "question": "What four groups are document elements categorized into when building the hierarchical structure?",
+            "ground_truth_chunk_ids": [
+                67,
+                68
+            ],
+            "ground_truth_excerpt": "Annotations are grouped into four categories: elements with direct structural relations, non-textual content within the logical structure, elements lacking direct associations, and references only (footnotes)."
+        },
+        {
+            "question_id": 17,
+            "question": "What proportion of the GraphDoc dataset underwent human verification, and how many pages were reviewed per domain?",
+            "ground_truth_chunk_ids": [
+                70
+            ],
+            "ground_truth_excerpt": "Extensive human verification and refinement cover approximately 58.5% of the dataset, reviewing 4,852 pages of Government Tenders, 12,000 pages of Financial Reports, 6,469 pages of Patents, and 8,000 pages from other domains."
+        },
+        {
+            "question_id": 18,
+            "question": "What two limitations does the paper acknowledge about the DRGG approach?",
+            "ground_truth_chunk_ids": [
+                48
+            ],
+            "ground_truth_excerpt": "Our model structure focused only on visual modality input without multi-modality consideration, and the dataset and approach were primarily designed for single-page documents, with multi-page extension left unaddressed."
+        },
+        {
+            "question_id": 19,
+            "question": "What two main sources of error are identified in DRGG's qualitative relation predictions?",
+            "ground_truth_chunk_ids": [
+                104
+            ],
+            "ground_truth_excerpt": "Errors arise primarily from ambiguity in densely populated layouts where elements lack clear alignment, and from misclassification and inaccurate bounding boxes at the DLA stage propagating to relation prediction."
+        },
+        {
+            "question_id": 20,
+            "question": "What improvements does the paper suggest to reduce DRGG's relation-prediction errors?",
+            "ground_truth_chunk_ids": [
+                105
+            ],
+            "ground_truth_excerpt": "The authors suggest incorporating multimodal embeddings combining visual and textual features, improving the DLA backbone, integrating post-processing with contextual cues, and extending DRGG to multi-page relational understanding."
+        }
+    ]
+}

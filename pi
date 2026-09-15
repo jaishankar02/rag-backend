@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CURRENT_DIR="$(pwd)"
+
+if [[ "$CURRENT_DIR" != "$SCRIPT_DIR" ]]; then
+  echo "Run this command only from: $SCRIPT_DIR"
+  exit 1
+fi
+
+PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
+
+if [[ ! -x "$PYTHON_BIN" ]]; then
+  echo "Virtual environment not found at .venv. Create it first."
+  exit 1
+fi
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: ./pi <package> [package ...]"
+  exit 1
+fi
+
+"$PYTHON_BIN" -m pip install "$@"
+"$PYTHON_BIN" -m pip freeze > "$SCRIPT_DIR/requirements.txt"
+
+echo "requirements.txt updated"
