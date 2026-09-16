@@ -1,5 +1,5 @@
+
 from functools import lru_cache
-import spaces
 from sentence_transformers import CrossEncoder
 
 
@@ -23,7 +23,11 @@ def get_reranker_model() -> CrossEncoder:
     """
     print(f"Loading reranker model: {MODEL_NAME}")
 
-    model = CrossEncoder(MODEL_NAME)
+    model = CrossEncoder(
+        MODEL_NAME,
+        device="cpu",
+        automodel_args={"low_cpu_mem_usage":False}
+        )
 
     print("Reranker model loaded successfully.")
 
@@ -33,14 +37,7 @@ def get_reranker_model() -> CrossEncoder:
 # --------------------------------------------------
 # Reranking service
 # --------------------------------------------------
-@spaces.GPU(duration=30)
-def _run_rerank_predict(pairs: list[tuple[str, str]], batch_size: int = 8):
-    model = get_reranker_model()
-    return model.predict(
-        pairs,
-        batch_size=batch_size,
-        show_progress_bar=False,
-    )
+
 
 class RerankingService:
 
@@ -83,7 +80,11 @@ class RerankingService:
         ]
 
         # Run all candidates through the model in one batch.
-        scores = _run_rerank_predict(pairs, batch_size=8)
+        scores = self.model.predict(
+            pairs,
+            batch_size=8,
+            show_progress_bar=False,
+        )
 
         # Attach reranking score to each result.
         reranked_results = []
