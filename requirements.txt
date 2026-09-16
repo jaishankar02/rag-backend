@@ -1,3 +1,4 @@
+--extra-index-url https://abetlen.github.io/llama-cpp-python/wheels/cpu
 fastapi==0.115.0
 uvicorn==0.30.0
 python-multipart==0.0.9
@@ -13,4 +14,3 @@ scikit-learn==1.5.1
 numpy==1.26.4
 gradio==5.16.0
 llama-cpp-python
-
