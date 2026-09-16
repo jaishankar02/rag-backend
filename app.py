@@ -1,9 +1,14 @@
 import gradio as gr
+import spaces
 from app.main import app as fastapi_app
+
+@spaces.GPU(duration=60)
+def status_check():
+    return "DocRag Enterprise RAG Backend API is Online & Running 🚀"
 
 # Create a lightweight Gradio interface showing server status
 demo = gr.Interface(
-    fn=lambda: "DocRag Enterprise RAG Backend API is Online & Running 🚀",
+    fn=status_check,
     inputs=[],
     outputs="text",
     title="DocRag RAG Backend Engine",
