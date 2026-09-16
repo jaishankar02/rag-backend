@@ -50,25 +50,27 @@ def find_free_port() -> int:
 if __name__ == "__main__":
     # 1. Launch Gradio's own throwaway server purely so ZeroGPU's patched
     #    Blocks.launch() fires and registers the @spaces.GPU function at
-    #    startup. We don't use this server for anything else, so the exact
-    #    port doesn't matter -- just that it's actually free.
+    #    startup. This is never meant to serve real traffic, so:
+    #      - bind it to 127.0.0.1 only (no need to expose it externally)
+    #      - disable SSR mode, which needs a Node subprocess to talk back
+    #        to this server and is what's actually failing above
     dummy_port = find_free_port()
     try:
         demo.launch(
-            server_name="0.0.0.0",
+            server_name="127.0.0.1",
             server_port=dummy_port,
             prevent_thread_lock=True,
             show_error=True,
+            ssr_mode=False,
         )
     except OSError:
-        # Extremely unlikely race (port taken between check and bind) --
-        # retry once with a fresh port.
         dummy_port = find_free_port()
         demo.launch(
-            server_name="0.0.0.0",
+            server_name="127.0.0.1",
             server_port=dummy_port,
             prevent_thread_lock=True,
             show_error=True,
+            ssr_mode=False,
         )
 
     # 2. Run the actual unified FastAPI app on the main exposed port (7860)
