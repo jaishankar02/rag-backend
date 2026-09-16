@@ -1,7 +1,13 @@
 import multiprocessing
 import os
 from huggingface_hub import hf_hub_download
-from llama_cpp import Llama
+
+try:
+    from llama_cpp import Llama
+    HAS_LLAMA_CPP = True
+except ImportError:
+    from ctransformers import AutoModelForCausalLM
+    HAS_LLAMA_CPP = False
 
 
 class GenerationService:
@@ -20,17 +26,24 @@ class GenerationService:
 
         print(f"Loading GGUF model from: {model_path}")
 
-        # Use physical CPU cores
-        threads = max(1, multiprocessing.cpu_count() // 2)
+        if HAS_LLAMA_CPP:
+            threads = max(1, multiprocessing.cpu_count() // 2)
+            self.llm_type = "llama_cpp"
+            self.llm = Llama(
+                model_path=model_path,
+                n_ctx=2048,
+                n_threads=threads,
+                verbose=False,
+            )
+        else:
+            self.llm_type = "ctransformers"
+            self.llm = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                model_type="qwen2",
+                context_length=2048,
+            )
 
-        self.llm = Llama(
-            model_path=model_path,
-            n_ctx=2048,
-            n_threads=threads,
-            verbose=False,
-        )
-
-        print("Generation model loaded successfully.")
+        print(f"Generation model ({self.llm_type}) loaded successfully.")
 
     def build_prompt(self, query: str, context: str) -> str:
         return f"""You are an AI assistant for a document knowledge base.

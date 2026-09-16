@@ -16,10 +16,15 @@ except Exception:  # pragma: no cover - dependency may be missing in system pyth
     Distance = FieldCondition = Filter = MatchValue = PointStruct = VectorParams = None
 
 
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+# QDRANT_URL = os.getenv("QDRANT_URL", "https://7ea0bfa2-12dc-4a10-860d-e2d297315201.sa-east-1-0.aws.cloud.qdrant.io")
 COLLECTION_NAME = os.getenv("QDRANT_COLLECTION_NAME", "document_chunks")
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwic3ViamVjdCI6ImFwaS1rZXk6ODQ5NzZmYTgtMzA4My00MThhLTg3ZGItNTc3YjEyZDFlYTYzIn0.fQv4EhQ4xm9MBrqNmVctuBFKrH3GSemgBWhIUMOe79M
 
-client = QdrantClient(url=QDRANT_URL) if QdrantClient is not None else None
+
+client = QdrantClient(
+    url=os.environ["QDRANT_URL"],
+    api_key=os.environ["QDRANT_API_KEY"],
+) if QdrantClient is not None else None
 
 
 def _require_client():
