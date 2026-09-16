@@ -32,12 +32,11 @@ with gr.Blocks(title="DocRag RAG Backend Engine") as demo:
     output = gr.Textbox(label="Status")
     btn.click(fn=status_check, inputs=[], outputs=output)
 
-# Mount Gradio onto a sub-path so it DOES NOT intercept FastAPI's POST routes
+# Mount Gradio onto FastAPI under /ui so it doesn't intercept your POST routes.
+# This single call is enough for ZeroGPU to detect the @spaces.GPU function —
+# no separate demo.launch() is needed, which is what was causing the port conflict.
 app = gr.mount_gradio_app(fastapi_app, demo, path="/ui")
 
 if __name__ == "__main__":
-    # 1. Launch Gradio server purely to satisfy ZeroGPU's startup `@spaces.GPU` detection!
-    demo.launch(server_name="0.0.0.0", server_port=7861, prevent_thread_lock=True)
-    
-    # 2. Run the actual unified FastAPI app on the main exposed port (7860)
+    # Only one server, one port — this is what's exposed by the Space.
     uvicorn.run(app, host="0.0.0.0", port=7860)
