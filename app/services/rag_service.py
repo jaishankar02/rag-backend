@@ -1,7 +1,7 @@
 """
 RAG Service: Orchestrates retrieval, reranking, and generation.
 """
-
+import time
 from app.services.retrieval import retrieve_documents
 from app.services.context_builder import build_context
 from app.services.generation_service import GenerationService
@@ -39,7 +39,7 @@ class RAGService:
            Qdrant retrieval -> Cross-Encoder reranking
            -> Generation
         """
-
+        t_start=time.time()
         # ==========================================================
         # STEP 1: RETRIEVAL
         # ==========================================================
@@ -53,15 +53,18 @@ class RAGService:
 
             # Baseline uses exactly top_k retrieved chunks.
             retrieval_top_k = top_k
-
+        t0=time.time()
         query_embedding = embed_query(query)
+        t1=time.time()
+        print(f"[TIMING]embed_query:{t1-t0:.2f}s")
         candidates = search_hybrid(
             document_id=document_id,
             query=query,
             query_embedding=query_embedding,
             top_k=retrieval_top_k,
         )
-
+        t2=time.time()
+        print(f"[TIMING] search_hybrid:{t2-t1:.2f}s")
         if not candidates:
 
             return {
@@ -125,13 +128,15 @@ class RAGService:
                     f"Page: {result.get('page', 0)} | "
                     f"Chunk: {result.get('chunk')}"
                 )
-
+        t3=time.time()
+        print(f"[TIMING] rerank/select:{t3-t2:.2f}s")
         # ==========================================================
         # STEP 3: BUILD CONTEXT
         # ==========================================================
 
         context = build_context(results)
-
+        t4=time.time()
+        print(f"[TIMING]build_context:{t4-t3:.2f}s")
         # ==========================================================
         # STEP 4: GENERATION
         # ==========================================================
@@ -141,7 +146,8 @@ class RAGService:
             context=context,
             max_new_tokens=max_new_tokens,
         )
-
+        t5=time.time()
+        print(f"[TIMING] generation:{t5-t4:.2f}s")
         # ==========================================================
         # STEP 5: SOURCE INFORMATION
         # ==========================================================
@@ -167,7 +173,7 @@ class RAGService:
                 )
 
             sources.append(source)
-
+        print(f"[TIMING] TOTAL: {time.time() - t_start:.2f}s\n")
         # ==========================================================
         # STEP 6: RETURN
         # ==========================================================
