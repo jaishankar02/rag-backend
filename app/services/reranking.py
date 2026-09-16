@@ -1,5 +1,5 @@
 from functools import lru_cache
-
+import spaces
 from sentence_transformers import CrossEncoder
 
 
@@ -33,7 +33,7 @@ def get_reranker_model() -> CrossEncoder:
 # --------------------------------------------------
 # Reranking service
 # --------------------------------------------------
-
+@spaces.GPU(duration=30)
 class RerankingService:
 
     def __init__(self):
