@@ -33,7 +33,7 @@ def get_reranker_model() -> CrossEncoder:
 # --------------------------------------------------
 # Reranking service
 # --------------------------------------------------
-@spaces.GPU(duration=30)
+
 class RerankingService:
 
     def __init__(self):
@@ -43,7 +43,7 @@ class RerankingService:
         The actual model is cached by get_reranker_model().
         """
         self.model = get_reranker_model()
-    
+    @spaces.GPU(duration=30)
     def _predic(self,pairs:list[tuple[str,str]],batch_size:int=8):
         return self.model.predict(
             pairs,
