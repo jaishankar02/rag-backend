@@ -43,6 +43,13 @@ class RerankingService:
         The actual model is cached by get_reranker_model().
         """
         self.model = get_reranker_model()
+    
+    def _predic(self,pairs:list[tuple[str,str]],batch_size:int=8):
+        return self.model.predict(
+            pairs,
+            batch_size=batch_size,
+            show_progress_bar=False
+        )
 
     def rerank(
         self,
