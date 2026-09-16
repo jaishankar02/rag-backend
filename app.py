@@ -33,4 +33,4 @@ async def health_check():
     return {"status": "ok"}
 
 # Launch using Gradio (required for ZeroGPU)
-demo.launch(server_name="0.0.0.0", server_port=7860, ssr=False)
+demo.launch(server_name="0.0.0.0", server_port=7860)
