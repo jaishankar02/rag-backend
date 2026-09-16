@@ -6,7 +6,7 @@ rank-bm25==0.2.2
 redis==8.1.0
 sentence-transformers==6.0.1
 transformers==5.17.0
-torch==2.14.0
+torch==2.13.0
 huggingface_hub==1.31.0
 llama_cpp_python==0.3.35
 pymupdf==1.28.2
@@ -15,4 +15,3 @@ groq==1.7.0
 scikit-learn==1.9.1
 numpy==2.5.3
 gradio==5.16.0
-
