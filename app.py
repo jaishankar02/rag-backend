@@ -10,5 +10,9 @@ demo = gr.Interface(
     description="Hybrid Search RAG (Qdrant + Redis BM25 RRF + Cross-Encoder + Qwen GGUF)",
 )
 
-# Mount FastAPI app onto Gradio on port 7860
+# Mount Gradio demo into FastAPI app
 app = gr.mount_gradio_app(fastapi_app, demo, path="/")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)
