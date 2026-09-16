@@ -14,7 +14,7 @@ try:
 except Exception:  # pragma: no cover - dependency may be missing in system python
     QdrantClient = None
     Distance = FieldCondition = Filter = MatchValue = PointStruct = VectorParams = None
-
+from qdrant_client.models import PayloadSchemaType
 
 # QDRANT_URL = os.getenv("QDRANT_URL", "https://7ea0bfa2-12dc-4a10-860d-e2d297315201.sa-east-1-0.aws.cloud.qdrant.io")
 COLLECTION_NAME = os.getenv("QDRANT_COLLECTION_NAME", "document_chunks")
@@ -47,6 +47,12 @@ def create_collection_if_not_exists(vector_size: int):
             size=vector_size,
             distance=Distance.COSINE,
         ),
+    )
+
+    client.create_payload_index(
+        collection_name=COLLECTION_NAME,
+        field_name="document_id",
+        field_schema=PayloadSchemaType.KEYWORD,
     )
 
 
