@@ -33,6 +33,14 @@ def get_reranker_model() -> CrossEncoder:
 # --------------------------------------------------
 # Reranking service
 # --------------------------------------------------
+@spaces.GPU(duration=30)
+def _run_rerank_predict(pairs: list[tuple[str, str]], batch_size: int = 8):
+    model = get_reranker_model()
+    return model.predict(
+        pairs,
+        batch_size=batch_size,
+        show_progress_bar=False,
+    )
 
 class RerankingService:
 
@@ -43,14 +51,7 @@ class RerankingService:
         The actual model is cached by get_reranker_model().
         """
         self.model = get_reranker_model()
-    @spaces.GPU(duration=30)
-    def _predic(self,pairs:list[tuple[str,str]],batch_size:int=8):
-        return self.model.predict(
-            pairs,
-            batch_size=batch_size,
-            show_progress_bar=False
-        )
-
+   
     def rerank(
         self,
         query: str,
@@ -82,11 +83,7 @@ class RerankingService:
         ]
 
         # Run all candidates through the model in one batch.
-        scores = self.model.predict(
-            pairs,
-            batch_size=8,
-            show_progress_bar=False,
-        )
+        scores = _run_rerank_predict(pairs, batch_size=8)
 
         # Attach reranking score to each result.
         reranked_results = []
