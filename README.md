@@ -11,3 +11,4 @@ pinned: false
 
 # DocRag FastAPI Backend Engine
 Production Hybrid RAG Retrieval (Qdrant Dense Vector + Redis BM25) with Cross-Encoder Reranking and GGUF Generation mounted on Gradio.
+# rag-backend
