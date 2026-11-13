@@ -263,28 +263,6 @@ The `tests/` folder holds a reproducible evaluation harness:
 
 Reranking noticeably improves ranking quality and answer correctness.
 
-## Known Limitations & Security Notes
 
-> [!WARNING]
-> **Rotate leaked credentials.** `app/services/redis_service.py` contains a default Redis host/password, and `app/services/qdrant_service.py` has a Qdrant URL and API key left in comments. These are in your git history. Revoke/rotate them, remove the defaults, and load everything from environment variables.
-
-- BM25 indexes are stored with `pickle`; only point Redis at a trusted instance (unpickling untrusted data is unsafe).
-- Upload endpoint has no file-type, size or auth validation; ingestion is synchronous.
-- The upload response includes all chunks with embeddings, which makes it large.
-- `RAGService` loads the LLM and reranker at import time, so startup is slow and memory-heavy.
-- `use_reranker` and `max_new_tokens` are not exposed by the API.
-- `/debug/...` endpoint is unauthenticated.
-- Redis indexes and Qdrant vectors are never deleted (no delete-document endpoint).
-- Two entrypoints exist (`app/main.py`, `app.py`) with slightly different setup; the Dockerfile uses `app.main:app`.
-
-## Roadmap
-
-- Delete/list documents endpoints and authentication
-- Async/background ingestion with status polling
-- Streaming responses
-- Multi-document queries and chat history
-- Move evaluation paths/config to CLI arguments
-
----
 
 Built by Jaishankar as a hybrid-RAG learning and portfolio project.
